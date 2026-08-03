@@ -321,7 +321,7 @@ if (tagType === 'counter') {
     return data.gtmOnFailure();
   }
   
-  const counterUrl = 'https://data.min-cdn.net/counter/' + counterId + '.js';
+  const counterUrl = 'https://data.min-cdn.net/counter/' + encodeUriComponent(counterId) + '.js';
   log('Loading counter script: ' + counterUrl);
   
   injectScript(counterUrl, () => {
@@ -355,7 +355,7 @@ const checkDone = () => {
   }
 };
 
-const containerUrl = 'https://' + trackingDomain + '/trck/etms/eatms.js?advertiser_id=' + advertiserId;
+const containerUrl = 'https://' + trackingDomain + '/trck/etms/eatms.js?advertiser_id=' + encodeUriComponent(advertiserId);
 log('Loading general container.');
 injectScript(containerUrl, () => {
   log('General container loaded.');
@@ -380,15 +380,15 @@ if (mode === 'standard' || mode === 'both') {
   let trackId = localStorage.getItem(storageKey) || '';
 
   let trackingUrl = 'https://' + trackingDomain + '/trck/etrack/?' +
-    'advertiser_id=' + advertiserId +
-    '&trigger_id=' + (data.triggerId || '1') +
+    'advertiser_id=' + encodeUriComponent(advertiserId) +
+    '&trigger_id=' + encodeUriComponent(data.triggerId || '1') +
     '&token=' + encodeUriComponent(data.token) +
     '&turnover=' + encodeUriComponent(data.turnover) +
     '&currency=' + encodeUriComponent(data.currency || 'EUR') +
     '&descr=' + encodeUriComponent(data.descr || '') +
     '&t=js';
   if (trackId) {
-    trackingUrl += '&trackid=' + trackId;
+    trackingUrl += '&trackid=' + encodeUriComponent(trackId);
   }
   
   sendPixel(trackingUrl, () => {
@@ -412,8 +412,8 @@ if (mode === 'basket' || mode === 'both') {
   }
   
   const basketScriptUrl = 'https://' + trackingDomain + '/trck/ebasket/ebasket.js?' +
-    'advertiser_id=' + advertiserId +
-    '&trigger_id=' + (data.triggerId || '1') +
+    'advertiser_id=' + encodeUriComponent(advertiserId) +
+    '&trigger_id=' + encodeUriComponent(data.triggerId || '1') +
     '&ordertoken=' + encodeUriComponent(data.basketOrderToken) +
     '&turnover=' + encodeUriComponent(data.basketTurnover) +
     '&descr=basket_failover';
