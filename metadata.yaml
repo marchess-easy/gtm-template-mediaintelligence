@@ -7,6 +7,5 @@ versions:
   # Older versions
   - sha: 7c41e3c5bfd08be299fe385ccf42a22a44fb635c
     changeNotes: Encode user-defined parameters used in URLs with encodeUriComponent().
-  # Older versions
   - sha: dbeabde9ab1fc1fa2813b97cc3b8b41ad81a4c3d
     changeNotes: Initial release.
