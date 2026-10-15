@@ -13,7 +13,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "MIN Tracker (counter, eatms, etrack, ebasket)",
+  "displayName": "MIN Tracker by easy-m",
   "categories": [
     "AFFILIATE_MARKETING"
   ],
